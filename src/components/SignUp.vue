@@ -1,3 +1,66 @@
 <template>
-  <h2>Регистрация</h2>
+  <div class="auth auth__sign-up">
+    <h3 class="title is-3">Регистрация</h3>
+    <form class="" action="" method="" @submit.prevent="registerUser">
+      <div class="field">
+        <label class="label">E-mail</label>
+        <div class="control">
+          <input id="signup-email" class="input" type="email" placeholder="Ваша электронная почта" required v-model="user.email">
+        </div>
+      </div>
+
+      <div class="field">
+        <label class="label">Пароль (не менее 6 символов)</label>
+        <div class="control">
+          <input id="signup-pass" class="input" type="password" placeholder="Придумайте пароль" required v-model="user.password">
+        </div>
+      </div>
+
+      <div class="field">
+        <label class="label">Повторите пароль</label>
+        <div class="control">
+          <input id="signup-pass2" class="input" type="password" placeholder="Повторите пароль" required v-model="user.confirmPassword">
+        </div>
+      </div>
+
+      <div class="notification is-danger" v-if="error">
+        <strong>Внимание!</strong><br>
+        Регистрация не была завершена, так как введенные пароли не совпадают или пароль короче 6 символов.
+      </div>
+
+      <div class="control">
+        <button class="button is-primary" type="submit">Зарегистрироваться</button>
+      </div>
+    </form>
+  </div>
 </template>
+
+<script>
+  export default {
+    name: 'sign-up',
+
+    data() {
+      return {
+        user: {
+          email: '',
+          password: '',
+          confirmPassword: ''
+        },
+        error: false
+      }
+    },
+
+    methods: {
+      registerUser() {
+        // так как все поля имеют атрибут required то проверку для инпутов мы не используем
+        // но нам надо проверить совпадают ли пароли и если нет, вывести нотификейшн об этом
+        if ( this.user.password !== this.user.confirmPassword || this.user.password.length < 6 ) {
+          this.error = true;
+        }
+        else {
+
+        }
+      }
+    }
+  }
+</script>

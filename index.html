@@ -7,6 +7,21 @@
   </head>
   <body>
     <div id="app"></div>
+
     <script src="/dist/build.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/4.8.2/firebase.js"></script>
+    <script>
+      // Initialize Firebase
+      var config = {
+        apiKey: "AIzaSyDQ9otk4AyQbMEmrV6s2QOPiUJ1zHwLf78",
+        authDomain: "tutorial-random-serials.firebaseapp.com",
+        databaseURL: "https://tutorial-random-serials.firebaseio.com",
+        projectId: "tutorial-random-serials",
+        storageBucket: "tutorial-random-serials.appspot.com",
+        messagingSenderId: "571822391856"
+      };
+      firebase.initializeApp(config);
+    </script>
+
   </body>
 </html>
