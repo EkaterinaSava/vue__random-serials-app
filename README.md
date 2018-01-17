@@ -1,3 +1,19 @@
+# Vue.js To-Do List
+
+❉ По скринкасту https://www.youtube.com/watch?v=Bip6Sdn_QpM&list=PLLd6Lzq1_u-emTVzsgpLMTxK9W68Sdzxp
+
+:octocat:
+
+:white_check_mark: Урок 1 — Первые шаги
+
+:white_check_mark: Урок 2 — Мини-версия списка дел
+
+:white_check_mark: Урок 3 — Компоненты. Начало создания приложения
+
+Урок 4 Вход и регистрация с помощью firebase
+
+---
+
 # tutorial-random-serials
 
 > A Vue.js project
