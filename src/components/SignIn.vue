@@ -1,3 +1,61 @@
 <template>
-  <h2>Вход</h2>
+  <div class="auth auth__sign-in">
+    <h3 class="title is-3">Вход</h3>
+    
+    <form class="" action="" method="" @submit.prevent="loginUser">
+      <div class="field">
+        <label class="label">E-mail</label>
+        <div class="control">
+          <input id="signin-email" class="input" type="email" placeholder="Ваша электронная почта" required v-model="user.email">
+        </div>
+      </div>
+
+      <div class="field">
+        <label class="label">Пароль</label>
+        <div class="control">
+          <input id="signin-pass" class="input" type="password" placeholder="Ваш пароль" required v-model="user.password">
+        </div>
+      </div>
+
+      <div class="control">
+        <button class="button is-primary" type="submit">Войти</button>
+      </div>
+    </form>
+  </div>
 </template>
+
+<script>
+  export default {
+    name: 'sign-in',
+
+    data() {
+      return {
+        user: {
+          email: '',
+          password: ''
+        }
+      }
+    },
+
+    methods: {
+      loginUser() {
+        // по аналогии с регистрацией
+        firebase.auth().signInWithEmailAndPassword(this.user.email, this.user.password)
+          // если все прошло успешно, то:
+          .then( response => {
+            //console.log(response);
+            // нам нужны: email юзера, чтобы показать его в верхнем правом углу, его уникальный ID (ключ)
+            // плюс, если все прошло успешно - надо перекинуть юзера на главную страницу с формы входа (mainPage: true)
+            // плюс передать, что вход успешен complete: true
+            const sett = {
+              email: response.email,
+              uid: response.uid,
+              mainPage: true,
+              complete: true
+            }
+            this.$emit('addUser', sett);
+          })
+      }
+    }
+  }
+</script>
