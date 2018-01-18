@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-
+    <!-- -->
     <nav class="navbar is-light">
       <div class="navbar-menu is-active">
         <div class="navbar-end" v-if="!signComplete">
@@ -19,6 +19,9 @@
         <sign-up v-else @regSuccess="sign = $event"></sign-up>
       </div>
     </section>
+    <section class="section" v-else>
+      <main-page :uid="uid"></main-page>
+    </section>
 
   </div>
 </template>
@@ -26,6 +29,7 @@
 <script>
   import SignIn from './components/SignIn.vue'
   import SignUp from './components/SignUp.vue'
+  import MainPage from './components/MainPage.vue'
 
   export default {
     name: 'app',
@@ -42,7 +46,8 @@
 
     components: {
       SignIn,
-      SignUp
+      SignUp,
+      MainPage
     },
 
     methods: {
