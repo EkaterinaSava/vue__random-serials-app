@@ -58,7 +58,18 @@
           this.error = true;
         }
         else {
-
+          // это то, что мы будем передавать в App.vue для дальнейших действий
+          firebase.auth().createUserWithEmailAndPassword(this.user.email, this.user.password)
+            // если юзер будет успешно создан, будет выполнена эта команда
+            // буквально - здесь мы передаем данные родительскому компоненту
+            .then( () => {
+              // мы должны будем повесить событие с именем первого аргумента на компонент <sign-up> в App.vue
+              // в эвенте, которое будет получать это событие, будет храниться строка 'sign-in'
+              this.$emit('regSuccess', 'sign-in');
+            })
+            .catch( error => {
+              console.log(error);
+            })
         }
       }
     }
