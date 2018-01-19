@@ -1,8 +1,8 @@
 <template>
   <div class="auth auth__sign-in">
     <h3 class="title is-3">Вход</h3>
-    
-    <form class="" action="" method="" @submit.prevent="loginUser">
+
+    <form class="" action="" method="" @submit.prevent="loginUser" v-if="show">
       <div class="field">
         <label class="label">E-mail</label>
         <div class="control">
@@ -21,15 +21,30 @@
         <button class="button is-primary" type="submit">Войти</button>
       </div>
     </form>
+
+    <div class="notification is-danger" v-if="signSuccess">
+      <strong>Поздравляем!</strong><br>
+      Вы успешно вошли.
+    </div>
+
+    <div class="notification is-success" v-if="signError">
+      <strong>Внимание!</strong><br>
+      Введенные данные содержат ошибку.
+    </div>
+
   </div>
 </template>
 
 <script>
   export default {
     name: 'sign-in',
-
+    
     data() {
       return {
+        show: true,
+        signSuccess: false,
+        signError: false,
+
         user: {
           email: '',
           password: ''
@@ -54,6 +69,11 @@
               complete: true
             }
             this.$emit('addUser', sett);
+            this.show = false;
+            this.signSuccess = true;
+          })
+          .catch(error => {
+            this.signError = true;
           })
       }
     }

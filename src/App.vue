@@ -4,16 +4,23 @@
     <nav class="navbar is-light">
       <div class="navbar-menu is-active">
         <div class="navbar-end" v-if="!signComplete">
-          <a class="navbar-item" @click="switchSign('sign-in')">Войти</a>
-          <a class="navbar-item" @click="switchSign('sign-up')">Зарегистрироваться</a>
+          <router-link to="/sign-in">
+            <button type="button" class="button" @click.prevent="switchSign('sign-in')">Войти</button>
+          </router-link>
+          <router-link to="/sign-up">
+            <button type="button" class="button" @click.prevent="switchSign('sign-up')">Зарегистрироваться</button>
+          </router-link>
         </div>
         <div class="navbar-end" v-else>
+          <router-link to="/serials">
+            <button type="button" class="button">Список сериалов</button>
+          </router-link>
           <span class="navbar-email">{{ email }}</span>
         </div>
       </div>
     </nav>
 
-    <section class="section" v-if="!isMainPage">
+    <!-- <section class="section" v-if="!isMainPage">
       <div class="container">
         <sign-in v-if="sign === 'sign-in'" @addUser="isMainPage = $event.mainPage, signComplete = $event.complete, email = $event.email, uid = $event.uid"></sign-in>
         <sign-up v-else @regSuccess="sign = $event"></sign-up>
@@ -21,6 +28,10 @@
     </section>
     <section class="section" v-else>
       <main-page :uid="uid"></main-page>
+    </section> -->
+
+    <section class="section">
+      <router-view @addUser="email = $event.email, signComplete = $event.complete, uid = $event.uid"></router-view>
     </section>
 
   </div>

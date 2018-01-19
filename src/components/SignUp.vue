@@ -1,7 +1,7 @@
 <template>
   <div class="auth auth__sign-up">
     <h3 class="title is-3">Регистрация</h3>
-    <form class="" action="" method="" @submit.prevent="registerUser">
+    <form class="" action="" method="" @submit.prevent="registerUser" v-if="show">
       <div class="field">
         <label class="label">E-mail</label>
         <div class="control">
@@ -23,15 +23,30 @@
         </div>
       </div>
 
-      <div class="notification is-danger" v-if="error">
+      <div class="notification is-danger" v-if="errorConfirm">
         <strong>Внимание!</strong><br>
-        Регистрация не была завершена, так как введенные пароли не совпадают или пароль короче 6 символов.
+        Регистрация не была завершена, так как введенные пароли не совпадают.
+      </div>
+
+      <div class="notification is-danger" v-if="errorSmall">
+        <strong>Внимание!</strong><br>
+        Регистрация не была завершена, так как пароль короче 6 символов.
       </div>
 
       <div class="control">
         <button class="button is-primary" type="submit">Зарегистрироваться</button>
       </div>
     </form>
+
+    <div class="notification is-danger" v-if="signSuccess">
+      <strong>Поздравляем!</strong><br>
+      Вы успешно вошли.
+    </div>
+
+    <div class="notification is-success" v-if="signError">
+      <strong>Внимание!</strong><br>
+      Введенные данные содержат ошибку.
+    </div>
   </div>
 </template>
 
@@ -46,16 +61,22 @@
           password: '',
           confirmPassword: ''
         },
-        error: false
+        errorConfirm: false,
+        errorSmall: false
       }
     },
 
     methods: {
       registerUser() {
+        this.errorConfirm = false;
+        this.errorSmall = false;
         // так как все поля имеют атрибут required то проверку для инпутов мы не используем
         // но нам надо проверить совпадают ли пароли и если нет, вывести нотификейшн об этом
-        if ( this.user.password !== this.user.confirmPassword || this.user.password.length < 6 ) {
-          this.error = true;
+        if ( this.user.password !== this.user.confirmPassword) {
+          this.errorConfirm = true;
+        }
+        else if ( this.user.password.length < 6 ) {
+          this.errorSmall = true;
         }
         else {
           // это то, что мы будем передавать в App.vue для дальнейших действий
@@ -66,9 +87,11 @@
               // мы должны будем повесить событие с именем первого аргумента на компонент <sign-up> в App.vue
               // в эвенте, которое будет получать это событие, будет храниться строка 'sign-in'
               this.$emit('regSuccess', 'sign-in');
+              this.show = false;
+              this.signSuccess = true;
             })
             .catch( error => {
-              console.log(error);
+              this.signError = true;
             })
         }
       }
