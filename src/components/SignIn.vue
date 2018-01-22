@@ -22,12 +22,12 @@
       </div>
     </form>
 
-    <div class="notification is-danger" v-if="signSuccess">
+    <div class="notification is-success" v-if="signSuccess">
       <strong>Поздравляем!</strong><br>
       Вы успешно вошли.
     </div>
 
-    <div class="notification is-success" v-if="signError">
+    <div class="notification is-danger" v-if="signError">
       <strong>Внимание!</strong><br>
       Введенные данные содержат ошибку.
     </div>
@@ -38,7 +38,7 @@
 <script>
   export default {
     name: 'sign-in',
-    
+
     data() {
       return {
         show: true,
@@ -66,7 +66,7 @@
               email: response.email,
               uid: response.uid,
               mainPage: true,
-              complete: true
+              signComplete: true
             }
             this.$emit('addUser', sett);
             this.show = false;

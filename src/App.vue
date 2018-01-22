@@ -5,10 +5,10 @@
       <div class="navbar-menu is-active">
         <div class="navbar-end" v-if="!signComplete">
           <router-link to="/sign-in">
-            <button type="button" class="button" @click.prevent="switchSign('sign-in')">Войти</button>
+            <button type="button" class="button" @click="switchSign('sign-in')">Войти</button>
           </router-link>
           <router-link to="/sign-up">
-            <button type="button" class="button" @click.prevent="switchSign('sign-up')">Зарегистрироваться</button>
+            <button type="button" class="button" @click="switchSign('sign-up')">Зарегистрироваться</button>
           </router-link>
         </div>
         <div class="navbar-end" v-else>
@@ -31,15 +31,15 @@
     </section> -->
 
     <section class="section">
-      <router-view @addUser="email = $event.email, signComplete = $event.complete, uid = $event.uid"></router-view>
+      <router-view @addUser="email = $event.email, signComplete = $event.signComplete, userUid = $event.uid" :uid="userUid"></router-view>
     </section>
 
   </div>
 </template>
 
 <script>
-  import SignIn from './components/SignIn.vue'
-  import SignUp from './components/SignUp.vue'
+  import SignIn   from './components/SignIn.vue'
+  import SignUp   from './components/SignUp.vue'
   import MainPage from './components/MainPage.vue'
 
   export default {
@@ -47,11 +47,12 @@
 
     data () {
       return {
-        sign: 'sign-in',
-        isMainPage: false,
+        // sign: 'sign-in',
+        // isMainPage: false,
         signComplete: false,
         email: '',
-        uid: ''
+        uid: '',
+        userUid: ''
       }
     },
 
