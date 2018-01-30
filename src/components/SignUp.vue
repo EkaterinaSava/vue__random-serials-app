@@ -1,51 +1,55 @@
 <template>
-  <div class="auth auth__sign-up">
-    <h3 class="title is-3">Регистрация</h3>
-    <form class="" action="" method="" @submit.prevent="registerUser" v-if="show">
-      <div class="field">
-        <label class="label">E-mail</label>
-        <div class="control">
-          <input id="signup-email" class="input" type="email" placeholder="Ваша электронная почта" required v-model="user.email">
+  <div class="page__auth page__auth--sign-up">
+    <div class="columns">
+      <div class="column is-4 is-offset-4">
+        <h3 class="title is-3">Регистрация</h3>
+        <form class="" action="" method="" @submit.prevent="registerUser" v-if="show">
+          <div class="field">
+            <label class="label">E-mail</label>
+            <div class="control">
+              <input id="signup-email" class="input" type="email" placeholder="Ваша электронная почта" required v-model="user.email">
+            </div>
+          </div>
+
+          <div class="field">
+            <label class="label">Пароль (не менее 6 символов)</label>
+            <div class="control">
+              <input id="signup-pass" class="input" type="password" placeholder="Придумайте пароль" required v-model="user.password">
+            </div>
+          </div>
+
+          <div class="field">
+            <label class="label">Повторите пароль</label>
+            <div class="control">
+              <input id="signup-pass2" class="input" type="password" placeholder="Повторите пароль" required v-model="user.confirmPassword">
+            </div>
+          </div>
+
+          <div class="notification is-danger" v-if="errorConfirm">
+            <strong>Внимание!</strong><br>
+            Регистрация не была завершена, так как введенные пароли не совпадают.
+          </div>
+
+          <div class="notification is-danger" v-if="errorSmall">
+            <strong>Внимание!</strong><br>
+            Регистрация не была завершена, так как пароль короче 6 символов.
+          </div>
+
+          <div class="control">
+            <button class="button is-primary" type="submit">Зарегистрироваться</button>
+          </div>
+        </form>
+
+        <div class="notification is-primary" v-if="signSuccess">
+          <strong>Поздравляем!</strong><br>
+          Вы успешно зарегистрировались.
+        </div>
+
+        <div class="notification is-danger" v-if="signError">
+          <strong>Внимание!</strong><br>
+          Введенные данные содержат ошибку.
         </div>
       </div>
-
-      <div class="field">
-        <label class="label">Пароль (не менее 6 символов)</label>
-        <div class="control">
-          <input id="signup-pass" class="input" type="password" placeholder="Придумайте пароль" required v-model="user.password">
-        </div>
-      </div>
-
-      <div class="field">
-        <label class="label">Повторите пароль</label>
-        <div class="control">
-          <input id="signup-pass2" class="input" type="password" placeholder="Повторите пароль" required v-model="user.confirmPassword">
-        </div>
-      </div>
-
-      <div class="notification is-danger" v-if="errorConfirm">
-        <strong>Внимание!</strong><br>
-        Регистрация не была завершена, так как введенные пароли не совпадают.
-      </div>
-
-      <div class="notification is-danger" v-if="errorSmall">
-        <strong>Внимание!</strong><br>
-        Регистрация не была завершена, так как пароль короче 6 символов.
-      </div>
-
-      <div class="control">
-        <button class="button is-primary" type="submit">Зарегистрироваться</button>
-      </div>
-    </form>
-
-    <div class="notification is-success" v-if="signSuccess">
-      <strong>Поздравляем!</strong><br>
-      Вы успешно вошли.
-    </div>
-
-    <div class="notification is-danger" v-if="signError">
-      <strong>Внимание!</strong><br>
-      Введенные данные содержат ошибку.
     </div>
   </div>
 </template>
@@ -65,7 +69,7 @@
           password: '',
           confirmPassword: ''
         },
-        
+
         errorConfirm: false,
         errorSmall: false
       }

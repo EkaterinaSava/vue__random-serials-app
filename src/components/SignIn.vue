@@ -1,37 +1,40 @@
 <template>
-  <div class="auth auth__sign-in">
-    <h3 class="title is-3">Вход</h3>
+  <div class="page__auth page__auth--sign-in">
+    <div class="columns">
+      <div class="column is-4 is-offset-4">
+        <h3 class="title is-3">Вход</h3>
 
-    <form class="" action="" method="" @submit.prevent="loginUser" v-if="show">
-      <div class="field">
-        <label class="label">E-mail</label>
-        <div class="control">
-          <input id="signin-email" class="input" type="email" placeholder="Ваша электронная почта" required v-model="user.email">
+        <form class="" action="" method="" @submit.prevent="loginUser" v-if="show">
+          <div class="field">
+            <label class="label">E-mail</label>
+            <div class="control">
+              <input id="signin-email" class="input" type="email" placeholder="Ваша электронная почта" required v-model="user.email">
+            </div>
+          </div>
+
+          <div class="field">
+            <label class="label">Пароль</label>
+            <div class="control">
+              <input id="signin-pass" class="input" type="password" placeholder="Ваш пароль" required v-model="user.password">
+            </div>
+          </div>
+
+          <div class="control">
+            <button class="button is-primary" type="submit">Войти</button>
+          </div>
+        </form>
+
+        <div class="notification is-primary" v-if="signSuccess">
+          <strong>Поздравляем!</strong><br>
+          Вы успешно вошли.
+        </div>
+
+        <div class="notification is-danger" v-if="signError">
+          <strong>Внимание!</strong><br>
+          Введенные данные содержат ошибку.
         </div>
       </div>
-
-      <div class="field">
-        <label class="label">Пароль</label>
-        <div class="control">
-          <input id="signin-pass" class="input" type="password" placeholder="Ваш пароль" required v-model="user.password">
-        </div>
-      </div>
-
-      <div class="control">
-        <button class="button is-primary" type="submit">Войти</button>
-      </div>
-    </form>
-
-    <div class="notification is-success" v-if="signSuccess">
-      <strong>Поздравляем!</strong><br>
-      Вы успешно вошли.
     </div>
-
-    <div class="notification is-danger" v-if="signError">
-      <strong>Внимание!</strong><br>
-      Введенные данные содержат ошибку.
-    </div>
-
   </div>
 </template>
 
