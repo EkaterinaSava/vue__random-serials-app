@@ -1,5 +1,5 @@
 <template>
-  <div class="main-page">
+  <div class="page__main">
 
     <form class="" action="" method="">
       <label class="label">Введите название любого сериала</label>
