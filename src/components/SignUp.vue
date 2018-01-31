@@ -3,7 +3,7 @@
     <div class="columns">
       <div class="column is-4 is-offset-4">
         <h3 class="title is-3">Регистрация</h3>
-        <form class="" action="" method="" @submit.prevent="registerUser" v-if="show">
+        <form class="" action="" method="" @submit.prevent="registerUser" v-if="show" class="page__auth-form">
           <div class="field">
             <label class="label">E-mail</label>
             <div class="control">
@@ -36,18 +36,28 @@
           </div>
 
           <div class="control">
-            <button class="button is-primary" type="submit">Зарегистрироваться</button>
+            <button class="button is-link" type="submit">Зарегистрироваться</button>
           </div>
         </form>
 
-        <div class="notification is-primary" v-if="signSuccess">
-          <strong>Поздравляем!</strong><br>
-          Вы успешно зарегистрировались.
+        <!-- если регистрация прошла успешно -->
+        <div v-if="signSuccess" class="page__auth-form-success">
+          <div class="notification is-success">
+            <strong>Поздравляем!</strong><br>
+            Вы успешно зарегистрировались.
+          </div>
+          <p>Теперь вы можете воспользоваться кнопкой «Войти» ниже или в шапке страницы.</p>
+          <router-link to="/sign-in" class="page__auth-form-signin">
+            <button type="button" class="button is-link" @click="switchSign('sign-in')">Войти</button>
+          </router-link>
         </div>
 
-        <div class="notification is-danger" v-if="signError">
-          <strong>Внимание!</strong><br>
-          Введенные данные содержат ошибку.
+        <!-- а если нет -->
+        <div v-if="signError" class="page__auth-form-error">
+          <div class="notification is-danger">
+            <strong>Внимание!</strong><br>
+            Введенные данные содержат ошибку.
+          </div>
         </div>
       </div>
     </div>
@@ -107,3 +117,24 @@
     }
   }
 </script>
+
+<style lang="scss" scoped>
+
+  .page {
+    &__auth {
+      &-form {
+        margin-bottom: 20px;
+
+        &-success + &-error {
+          display: none;
+        }
+
+        &-signin {
+          display: block;
+          margin-top: 10px;
+        }
+      }
+    }
+  }
+
+</style>

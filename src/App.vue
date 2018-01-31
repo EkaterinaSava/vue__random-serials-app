@@ -5,15 +5,15 @@
         <div class="container">
           <div class="navbar-end" v-if="!signComplete">
             <router-link to="/sign-in" class="navbar-btn">
-              <button type="button" class="button is-primary" @click="switchSign('sign-in')">Войти</button>
+              <button type="button" class="button is-link" @click="switchSign('sign-in')">Войти</button>
             </router-link>
             <router-link to="/sign-up" class="navbar-btn">
-              <button type="button" class="button is-primary is-outlined" @click="switchSign('sign-up')">Зарегистрироваться</button>
+              <button type="button" class="button is-link is-outlined" @click="switchSign('sign-up')">Зарегистрироваться</button>
             </router-link>
           </div>
           <div class="navbar-end" v-else>
             <router-link to="/serials" class="navbar-btn">
-              <button type="button" class="button is-info">Список сериалов</button>
+              <button type="button" class="button is-link">Список сериалов</button>
             </router-link>
             <span class="navbar-email">{{ email }}</span>
           </div>
@@ -63,12 +63,15 @@
   }
 </script>
 
-<style lang="scss" scoped>
+<!-- Общие стили для всего приложения -->
+<style lang="scss">
   body {
     min-width: 320px;
   }
-  
+
   .button {
+    padding-left: 1.25em;
+    padding-right: 1.25em;
     transition: all .25s ease-out;
   }
 
