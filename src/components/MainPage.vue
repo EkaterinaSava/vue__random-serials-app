@@ -1,37 +1,47 @@
 <template>
   <div class="page__main">
 
-    <form class="" action="" method="">
-      <label class="label">Введите название любого сериала</label>
-      <div class="field has-addons">
-        <div class="control">
-          <input class="input" type="text" placeholder="Сериал" v-model="title">
-        </div>
-        <div class="control">
-          <button class="button is-info" type="submit" @click.prevent="addSerial">Добавить в список</button>
-        </div>
+
+    <div class="tile is-ancestor">
+      <div class="tile is-parent">
+        <article class="tile is-child box">
+          <div class="content">
+            <ol>
+              <li v-for="(serial, index) in data.serials" :key="serial" @click="removeSerial(index)">{{ serial }}</li>
+            </ol>
+          </div>
+          <button class="button is-link is-medium" type="submit" @click="chooseRandomSerial(0, data.serials.length)">Выбрать случайный сериал</button>
+        </article>
       </div>
-    </form>
-
-    <br>
-
-    <ol>
-      <li v-for="(serial, index) in data.serials" :key="serial" @click="removeSerial(index)">{{ serial }}</li>
-    </ol>
-
-    <br>
-
-    <div>
-      <button class="button is-info" type="submit" @click="chooseRandomSerial(0, data.serials.length)">Выбрать случайный сериал</button>
-
-      <br><br>
-
-      <div class="notification">
-        {{ data.currentSerial }}
+      <div class="tile is-parent">
+        <article class="tile is-child box">
+          <form class="" action="" method="">
+            <label class="label">Добавить новый сериал в список</label>
+            <div class="field">
+              <div class="control">
+                <input class="input" type="text" placeholder="Введите название сериала" v-model="title">
+              </div>
+            </div>
+            <div class="field is-grouped is-grouped-right">
+              <div class="control">
+                <button class="button is-dark" type="submit" @click.prevent="addSerial">Добавить в список</button>
+              </div>
+            </div>
+          </form>
+        </article>
       </div>
-
-      <button class="button is-success" type="submit" @click="removeCurrentSerial">Этот сериал уже просмотрен!</button>
     </div>
+
+    <div class="notification box">
+      {{ data.currentSerial }}
+    </div>
+
+    <div class="field is-grouped is-grouped-right">
+      <div class="control">
+        <button class="button is-dark is-outlined" type="submit" @click="removeCurrentSerial">Этот сериал уже просмотрен!</button>
+      </div>
+    </div>
+
   </div>
 </template>
 
