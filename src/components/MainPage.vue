@@ -1,13 +1,17 @@
 <template>
   <div class="page__main">
 
-
     <div class="tile is-ancestor">
       <div class="tile is-parent">
         <article class="tile is-child box">
           <div class="content">
-            <ol>
-              <li v-for="(serial, index) in data.serials" :key="serial" @click="removeSerial(index)">{{ serial }}</li>
+            <ol class="serials__list">
+              <li v-for="(serial, index) in data.serials" :key="serial" class="serials__list-item">
+                <span class="serials__list-item-inner">
+                  <span>{{ serial }}</span>
+                  <a class="delete is-small" @click="removeSerial(index)"></a>
+                </span>
+              </li>
             </ol>
           </div>
           <button class="button is-link is-medium" type="submit" @click="chooseRandomSerial(0, data.serials.length)">Выбрать случайный сериал</button>
@@ -38,7 +42,7 @@
 
     <div class="field is-grouped is-grouped-right">
       <div class="control">
-        <button class="button is-dark is-outlined" type="submit" @click="removeCurrentSerial">Этот сериал уже просмотрен!</button>
+        <button class="button is-dark is-outlined" type="submit" @click="removeCurrentSerial">Этот сериал уже просмотрен! Удалить из списка</button>
       </div>
     </div>
 
@@ -84,7 +88,7 @@
           this.data.numberOfCurrentSerial = null;
         }
 
-        for (let i = 0; i < this.data.serial.length; i++) {
+        for (let i = 0; i < this.data.serials.length; i++) {
           if ( this.data.currentSerial === this.data.serials[i] ) {
             this.data.numberOfCurrentSerial = i;
           }
@@ -96,8 +100,10 @@
       },
 
       chooseRandomSerial(min, max) {
+        // просто типичный рандом
         const random = Math.floor(Math.random() * (max - min) + min);
 
+        // если в списке есть хотя бы 1 сериал
         if ( this.data.serials.length > 0 ) {
           this.data.currentSerial = this.data.serials[random];
           this.data.numberOfCurrentSerial = random;
@@ -109,9 +115,13 @@
       },
 
       removeCurrentSerial() {
+        // удалить можно только тот сериал, который был выбран
         if ( this.data.numberOfCurrentSerial !== null && this.data.numberOfCurrentSerial ) {
-          this.data.serials.splice(this.data.numberOfCurrentSerial, i);
-          this.data.numberOfCurrentSerial = 'Сериал не выбран...';
+          // удаляем
+          this.data.serials.splice(this.data.numberOfCurrentSerial, 1);
+          // заменяем его название на строку текста
+          this.data.currentSerial = 'Сериал не выбран...';
+          // номер текущего сериала становится 'null'
           this.data.numberOfCurrentSerial = null;
         }
 
@@ -139,3 +149,22 @@
     }
   }
 </script>
+
+<style lang="scss" scoped>
+  .serials {
+    &__list {
+      &-item {
+        &-inner {
+          display: inline-block;
+          line-height: 20px;
+          margin-bottom: 5px;
+        }
+        & .delete {
+          display: inline-block;
+          margin-left: 5px;
+          margin-top: 2px;
+        }
+      }
+    }
+  }
+</style>
