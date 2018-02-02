@@ -1,48 +1,50 @@
 <template>
   <div class="page__main">
 
-    <div class="tile is-ancestor">
-      <div class="tile is-parent">
-        <article class="tile is-child box">
-          <div class="content">
-            <ol class="serials__list">
-              <li v-for="(serial, index) in data.serials" :key="serial" class="serials__list-item">
-                <span class="serials__list-item-inner">
-                  <span>{{ serial }}</span>
-                  <a class="delete is-small" @click="removeSerial(index)"></a>
-                </span>
-              </li>
-            </ol>
-          </div>
-          <button class="button is-link is-medium" type="submit" @click="chooseRandomSerial(0, data.serials.length)">Выбрать случайный сериал</button>
-        </article>
-      </div>
-      <div class="tile is-parent">
-        <article class="tile is-child box">
-          <form class="" action="" method="">
-            <label class="label">Добавить новый сериал в список</label>
-            <div class="field">
-              <div class="control">
-                <input class="input" type="text" placeholder="Введите название сериала" v-model="title">
-              </div>
+    <div class="page__main-sign">
+      <div class="tile is-ancestor">
+        <div class="tile is-parent">
+          <article class="tile is-child box">
+            <div class="content">
+              <ol class="serials__list">
+                <li v-for="(serial, index) in data.serials" :key="serial" class="serials__list-item">
+                  <span class="serials__list-item-inner">
+                    <span>{{ serial }}</span>
+                    <a class="delete is-small" @click="removeSerial(index)"></a>
+                  </span>
+                </li>
+              </ol>
             </div>
-            <div class="field is-grouped is-grouped-right">
-              <div class="control">
-                <button class="button is-dark" type="submit" @click.prevent="addSerial">Добавить в список</button>
+            <button class="button is-link is-medium" type="submit" @click="chooseRandomSerial(0, data.serials.length)">Выбрать случайный сериал</button>
+          </article>
+        </div>
+        <div class="tile is-parent">
+          <article class="tile is-child box">
+            <form class="" action="" method="">
+              <label class="label">Добавить новый сериал в список</label>
+              <div class="field">
+                <div class="control">
+                  <input class="input" type="text" placeholder="Введите название сериала" v-model="title">
+                </div>
               </div>
-            </div>
-          </form>
-        </article>
+              <div class="field is-grouped is-grouped-right">
+                <div class="control">
+                  <button class="button is-dark" type="submit" @click.prevent="addSerial">Добавить в список</button>
+                </div>
+              </div>
+            </form>
+          </article>
+        </div>
       </div>
-    </div>
 
-    <div class="notification box">
-      {{ data.currentSerial }}
-    </div>
+      <div class="notification box">
+        {{ data.currentSerial }}
+      </div>
 
-    <div class="field is-grouped is-grouped-right">
-      <div class="control">
-        <button class="button is-dark is-outlined" type="submit" @click="removeCurrentSerial">Этот сериал уже просмотрен! Удалить из списка</button>
+      <div class="field is-grouped is-grouped-right">
+        <div class="control">
+          <button class="button is-dark is-outlined" type="submit" @click="removeCurrentSerial">Этот сериал уже просмотрен! Удалить из списка</button>
+        </div>
       </div>
     </div>
 

@@ -38,6 +38,7 @@
             <br>
             <p><strong>Репозиторий</strong> — </p>
             <p><a href="https://github.com/EkaterinaSava/vue-todo-via-tutorial">https://github.com/EkaterinaSava/vue-todo-via-tutorial</a></p>
+            <p>В Readme вы найдете описание принципов работы приложения и основного функционала :)</p>
           </div>
         </div>
       </div>
