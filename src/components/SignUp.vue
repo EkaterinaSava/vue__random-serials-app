@@ -117,24 +117,3 @@
     }
   }
 </script>
-
-<style lang="scss" scoped>
-
-  .page {
-    &__auth {
-      &-form {
-        margin-bottom: 20px;
-
-        &-success + &-error {
-          display: none;
-        }
-
-        &-signin {
-          display: block;
-          margin-top: 10px;
-        }
-      }
-    }
-  }
-
-</style>

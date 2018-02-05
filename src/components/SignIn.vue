@@ -40,7 +40,8 @@
         <div v-if="signError" class="page__auth-form-error">
           <div class="notification is-danger">
             <strong>Внимание!</strong><br>
-            Введенные данные содержат ошибку.
+            Такой пары email-password нет в нашей базе.<br>
+            Проверьте правильность введенных данных.
           </div>
         </div>
       </div>

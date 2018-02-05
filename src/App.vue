@@ -111,4 +111,22 @@
     word-break: break-word;
   }
 
+  /* sign in + sign up */
+  .page {
+    &__auth {
+      &-form {
+        margin-bottom: .75rem;
+
+        &-success + &-error {
+          display: none;
+        }
+
+        &-signin {
+          display: block;
+          margin-top: 10px;
+        }
+      }
+    }
+  }
+
 </style>
