@@ -27,8 +27,8 @@
       <div class="tile is-5 is-parent">
         <div class="tile is-child box">
           <div class="content">
-            <p class="title">«Внутри меня теплота»</p>
-            <p>Под капотом:</p>
+            <p class="title">«Обо мне»</p>
+            <p><strong>Под капотом:</strong></p>
             <ul>
               <li>vue.js</li>
               <li>via vue-cli (simple webpack)</li>
@@ -37,12 +37,13 @@
               <li>bulma (css framework)</li>
             </ul>
             <br>
-            <p><strong>Репозиторий</strong> — </p>
-            <p><a href="https://github.com/EkaterinaSava/vue__random-serials-app" target="_blank">vue-todo-via-tutorial</a></p>
+            <p><strong>Репозиторий</strong> — <a class="link" href="https://github.com/EkaterinaSava/vue__random-serials-app" target="_blank">vue: random-serials-app</a></p>
             <p>В
-              <a href="https://github.com/EkaterinaSava/vue__random-serials-app/blob/master/README.md" target="_blank">Readme</a>
+              <a class="link" href="https://github.com/EkaterinaSava/vue__random-serials-app/blob/master/README.md" target="_blank">Readme</a>
               вы найдете описание принципов работы приложения и основного функционала :)
             </p>
+            <br>
+            <p>:octocat:</p>
           </div>
         </div>
       </div>

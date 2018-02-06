@@ -111,6 +111,12 @@
     word-break: break-word;
   }
 
+  .link {
+    border-bottom-width: 1px;
+    border-bottom-style: solid;
+    transition: color .2s ease-out;
+  }
+
   /* sign in + sign up */
   .page {
     &__auth {
