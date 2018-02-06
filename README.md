@@ -6,6 +6,7 @@
 * vue.js
 * vue-router
 * firebase
+* bulma (css framework)
 
 ---
 

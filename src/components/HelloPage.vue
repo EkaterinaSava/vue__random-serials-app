@@ -34,11 +34,15 @@
               <li>via vue-cli (simple webpack)</li>
               <li>vue-router</li>
               <li>firebase</li>
+              <li>bulma (css framework)</li>
             </ul>
             <br>
             <p><strong>Репозиторий</strong> — </p>
-            <p><a href="https://github.com/EkaterinaSava/vue-todo-via-tutorial">https://github.com/EkaterinaSava/vue-todo-via-tutorial</a></p>
-            <p>В Readme вы найдете описание принципов работы приложения и основного функционала :)</p>
+            <p><a href="https://github.com/EkaterinaSava/vue__random-serials-app" target="_blank">vue-todo-via-tutorial</a></p>
+            <p>В
+              <a href="https://github.com/EkaterinaSava/vue__random-serials-app/blob/master/README.md" target="_blank">Readme</a>
+              вы найдете описание принципов работы приложения и основного функционала :)
+            </p>
           </div>
         </div>
       </div>
